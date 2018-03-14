@@ -27,7 +27,8 @@ function(e, data) {
             .text(fileName)
             .attr({
                 href: fileUrl,
-                target: '_blank'
+                target: '_blank',
+                class: 'input-group-text'
             });
 
         el.parent().find('.input-result').html(link);
@@ -52,9 +53,11 @@ $url = $widget->hasModel() ? $widget->model->getAttributeUrl($widget->attribute)
 
 <div class="input-group">
     <?= $input ?>
-    <span class="input-group-addon input-result">
+    <span class="input-group-append input-result">
         <?php if ($url): ?>
-            <a href="<?= $url ?>" target="_blank"><?= $value ?></a>
+            <a href="<?= $url ?>" class="input-group-text" target="_blank">
+                <?= $value ?>
+            </a>
         <?php else: ?>
             <?= $value ?>
         <?php endif; ?>
