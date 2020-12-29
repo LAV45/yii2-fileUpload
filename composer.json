@@ -30,6 +30,9 @@
     "require-dev": {
         "roave/security-advisories": "dev-master"
     },
+    "suggest": {
+        "creocoder/yii2-flysystem": "Allows you to use many filesystems, one API."
+    },
     "autoload": {
         "psr-4": {
             "lav45\\fileUpload\\": "src"

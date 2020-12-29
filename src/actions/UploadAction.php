@@ -67,7 +67,7 @@ class UploadAction extends Action
     /**
      * @var string Path to directory where files will be uploaded
      */
-    private $path;
+    private $path = '@webroot/assets/upload';
     /**
      * @var string URL path to directory where files will be uploaded
      */
@@ -98,7 +98,7 @@ class UploadAction extends Action
         if (empty($path)) {
             throw new InvalidConfigException('The "path" attribute must be set.');
         }
-        if (!FileHelper::createDirectory($path)) {
+        if (FileHelper::createDirectory($path) === false) {
             throw new InvalidCallException("Directory specified in 'path' attribute doesn't exist or cannot be created.");
         }
         return $path;
@@ -174,7 +174,6 @@ class UploadAction extends Action
         if (is_callable($this->afterRun)) {
             $result = call_user_func($this->afterRun, $result);
         }
-
         return $result;
     }
 
@@ -192,7 +191,6 @@ class UploadAction extends Action
         } else {
             $file_name = call_user_func($this->createFileName, $fileExtension, $this->path);
         }
-
         return $file_name;
     }
 }
